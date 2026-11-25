@@ -1,0 +1,17 @@
+# JetBrains MPS
+source_gen/
+source_gen.caches/
+classes_gen/
+.mps/workspace.xml
+.mps/shelf/
+
+# Java
+*.class
+target/
+build/
+out/
+
+# IDE y sistema
+.idea/workspace.xml
+.DS_Store
+Thumbs.db

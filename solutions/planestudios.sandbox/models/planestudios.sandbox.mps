@@ -104,49 +104,4 @@
       </node>
     </node>
   </node>
-  <node concept="pe01" id="3Kjqe9aeS0p">
-    <property role="TrG5h" value="Plan con ciclo (invalido)" />
-    <property role="pe11" value="12" />
-    <property role="pe12" value="10" />
-    <node concept="pe02" id="3Kjqe9aeS0k" role="pe13">
-      <property role="TrG5h" value="BAS" />
-      <property role="pe21" value="Basica" />
-      <property role="pe22" value="3" />
-    </node>
-    <node concept="pe02" id="3Kjqe9aeS0l" role="pe13">
-      <property role="TrG5h" value="A" />
-      <property role="pe21" value="Materia A" />
-      <property role="pe22" value="3" />
-      <node concept="pe03" id="3Kjqe9aeS0q" role="pe23">
-        <ref role="pe31" node="3Kjqe9aeS0n" resolve="C" />
-      </node>
-      <node concept="pe03" id="3Kjqe9aeS0r" role="pe23">
-        <ref role="pe31" node="3Kjqe9aeS0k" resolve="BAS" />
-      </node>
-    </node>
-    <node concept="pe02" id="3Kjqe9aeS0m" role="pe13">
-      <property role="TrG5h" value="B" />
-      <property role="pe21" value="Materia B" />
-      <property role="pe22" value="3" />
-      <node concept="pe03" id="3Kjqe9aeS0s" role="pe23">
-        <ref role="pe31" node="3Kjqe9aeS0l" resolve="A" />
-      </node>
-    </node>
-    <node concept="pe02" id="3Kjqe9aeS0n" role="pe13">
-      <property role="TrG5h" value="C" />
-      <property role="pe21" value="Materia C" />
-      <property role="pe22" value="3" />
-      <node concept="pe03" id="3Kjqe9aeS0t" role="pe23">
-        <ref role="pe31" node="3Kjqe9aeS0m" resolve="B" />
-      </node>
-    </node>
-    <node concept="pe02" id="3Kjqe9aeS0o" role="pe13">
-      <property role="TrG5h" value="D" />
-      <property role="pe21" value="Materia D" />
-      <property role="pe22" value="3" />
-      <node concept="pe03" id="3Kjqe9aeS0u" role="pe23">
-        <ref role="pe31" node="3Kjqe9aeS0n" resolve="C" />
-      </node>
-    </node>
-  </node>
 </model>

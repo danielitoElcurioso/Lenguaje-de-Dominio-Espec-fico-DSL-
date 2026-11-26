@@ -16,7 +16,8 @@ formales, detectar inconsistencias o deducir nueva información de forma automá
 .mps/                             proyecto de MPS (abrir esta carpeta raíz con File → Open)
 languages/planestudios/           el lenguaje: structure, editor, constraints, typesystem, behavior
 solutions/planestudios.razonador/ el razonador empaquetado (lib/razonador.jar) para usarlo desde MPS
-solutions/planestudios.sandbox/   modelos de prueba (Sandbox)
+solutions/planestudios.sandbox/   modelos de ejemplo: válidos (se generan) e inválidos (no se generan)
+solutions/planestudios.tests/     pruebas automáticas jetbrains.mps.lang.test
 razonador-java/                   código fuente del razonador y sus 40 pruebas (fuera de MPS)
 ```
 
@@ -64,12 +65,39 @@ edita un plan y marca en rojo los ciclos, materias inalcanzables, materias que e
 prerrequisitos inexistentes; en amarillo los prerrequisitos redundantes; y como error del plan los
 créditos insuficientes.
 
+## Generador (TextGen)
+
+Cada plan del modelo `planestudios.sandbox` se genera como un archivo `<nombre del plan>.json` con el
+reporte completo del razonador: diagnósticos, orden topológico, semestres mínimos, ruta crítica,
+prerrequisitos transitivos de cada materia y la simulación semestre a semestre. Para generarlo: clic
+derecho en el modelo `planestudios.sandbox` → **Generate Model**. El archivo queda en
+`solutions/planestudios.sandbox/source_gen/` (no se sube a git; se regenera).
+
+## Pruebas automáticas (`jetbrains.mps.lang.test`)
+
+`solutions/planestudios.tests` contiene el caso `PruebasRazonador` con 5 planes. Cada nodo marcado con
+*has error* / *has warning* debe recibir ese mensaje del razonador, y los demás no deben tener ninguno:
+
+| Plan de prueba | Qué verifica |
+|---|---|
+| Plan minimo valido | un plan correcto no produce errores ni advertencias |
+| Ingenieria de Sistemas | inferencia: en TC el prerrequisito DIS es redundante (warning) |
+| Plan con ciclo | ciclo A → B → C → A (error en las tres) y D inalcanzable (error) |
+| Plan con auto-prerrequisito | una materia que se exige a sí misma es un ciclo |
+| Plan con tope excedido | PG supera el tope de créditos (error) y el plan no suma los créditos del grado (error del plan) |
+
+Para correrlas: clic derecho en la solución `planestudios.tests` → **Run Tests**.
+
 ## Modelos de la Sandbox
 
 | Modelo | Tipo | Qué demuestra |
 |---|---|---|
 | Ingenieria de Sistemas | válido | 9 materias; el razonador advierte que en TC el prerrequisito DIS es redundante (ya lo exige EDD) |
 | Plan con ciclo (invalido) | inválido | ciclo A → B → C → A (error en las tres) y D inalcanzable porque depende del ciclo |
+| Plan con tope excedido (invalido) | inválido | materia de 12 créditos con tope de 10 y créditos insuficientes para el grado |
+
+Los planes inválidos están en el modelo `planestudios.sandbox.invalidos`, marcado para no generarse
+(MPS no genera modelos con errores).
 
 ## Avance del proyecto
 
@@ -81,12 +109,12 @@ créditos insuficientes.
 | Reconstrucción del proyecto MPS para que se pueda abrir desde el repo | Gabriel Felipe Ruiz | ✅ hecho |
 | Editor con proyección tabular | Gabriel Felipe Ruiz | ✅ hecho |
 | Integración del razonador en MPS (Typesystem) | Gabriel Felipe Ruiz | ✅ hecho |
-| Sandbox: 1 plan válido y 1 inválido | Gabriel Felipe Ruiz | ✅ hecho |
+| Sandbox: 1 plan válido y 2 inválidos | Gabriel Felipe Ruiz | ✅ hecho |
 | Sandbox: modelos válidos restantes | Daniel Mauricio Jiménez | pendiente |
 | Constraints (scoping) y reglas de tipos | Andrés Felipe Camargo | pendiente |
-| Modelos inválidos restantes y tests `lang.test` de errores | Andrés Felipe Camargo | pendiente |
-| Generator / TextGen (reporte JSON) | Gabriel Felipe Ruiz | pendiente |
-| Tests `lang.test` de las inferencias del razonador | Gabriel Felipe Ruiz | pendiente |
+| Modelos inválidos y tests `lang.test` de scoping y tipos | Andrés Felipe Camargo | pendiente |
+| Generator / TextGen (reporte JSON) | Gabriel Felipe Ruiz | ✅ hecho |
+| Tests `lang.test` del razonador (5 planes de prueba) | Gabriel Felipe Ruiz | ✅ hecho |
 | PDF del Hito 1, tabla de teoría y guion del video | Miguel Ángel Cortés | pendiente |
 
 ### Aportes de Gabriel Felipe Ruiz (rol: Razonador y generador)
@@ -105,3 +133,7 @@ créditos insuficientes.
   `planestudios.razonador` con el jar, y la regla de Typesystem `check_PlanEstudios_razonador`.
   Verificado en MPS 2026.2: detecta el ciclo A → B → C → A, la materia D inalcanzable y el
   prerrequisito redundante de TC.
+- **25-nov — Generador y pruebas:** TextGen que convierte cada plan válido en un reporte JSON con
+  las deducciones del razonador; separación de la Sandbox en modelos válidos e inválidos; solución
+  `planestudios.tests` con el caso `PruebasRazonador` (5 planes, 8 verificaciones de errores y
+  advertencias).

@@ -40,7 +40,7 @@ heurística. Sin tope, el número de niveles del DAG sí es la respuesta exacta.
    `creditosGrado`, hijos `materias`), `Materia` (`codigo`, `nombre`, `creditos`, hijos `prerrequisitos`),
    `RefPrerrequisito` (referencia a `Materia`).
 2. Copiar `Razonador` como clase de baseLanguage en el modelo del lenguaje (el código está en Java
-   simple a propósito), cambiando los `String` de código por `node<Materia>`.
+   simple a propósito), cambiando los `String` de código por `node<Materia>`. En MPS el código de cada materia es la propiedad `name` (Materia implementa INamedConcept).
 3. Una regla `checking rule` en el Typesystem sobre `PlanEstudios` que llame a `verificar()` y
    marque con `error`/`warning` el nodo de cada `Diagnostico`.
 4. Un TextGen sobre `PlanEstudios` que produzca el JSON de `Reporte`.

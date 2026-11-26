@@ -18,6 +18,10 @@
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="1169129564478" name="implements" index="PzmwI" />
+      </concept>
+      <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
+        <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
       <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
         <property id="241647608299431129" name="propertyId" index="IQ2nx" />
@@ -43,11 +47,6 @@
     <property role="R4oN_" value="Concepto que representa el plan de estudios." />
     <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="3Kjqe9adsgl" role="1TKVEl">
-      <property role="IQ2nx" value="4328918987950113813" />
-      <property role="TrG5h" value="nombre" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
     <node concept="1TJgyi" id="3Kjqe9adsgm" role="1TKVEl">
       <property role="IQ2nx" value="4328918987950113814" />
       <property role="TrG5h" value="maxCreditosSemestre" />
@@ -65,16 +64,14 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="3Kjqe9adsgd" resolve="Materia" />
     </node>
+    <node concept="PrWs8" id="3Kjqe9aeN01" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
   </node>
   <node concept="1TIwiD" id="3Kjqe9adsgd">
     <property role="EcuMT" value="4328918987950113805" />
     <property role="TrG5h" value="Materia" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="3Kjqe9adsgv" role="1TKVEl">
-      <property role="IQ2nx" value="4328918987950113823" />
-      <property role="TrG5h" value="codigo" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
     <node concept="1TJgyi" id="3Kjqe9adsgx" role="1TKVEl">
       <property role="IQ2nx" value="4328918987950113825" />
       <property role="TrG5h" value="nombre" />
@@ -91,6 +88,9 @@
       <property role="20kJfa" value="prerrequisitos" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="3Kjqe9adsge" resolve="RefPrerrequisito" />
+    </node>
+    <node concept="PrWs8" id="3Kjqe9aeN02" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
   <node concept="1TIwiD" id="3Kjqe9adsge">

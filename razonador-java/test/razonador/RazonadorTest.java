@@ -29,6 +29,7 @@ public class RazonadorTest {
         detectaTopeExcedidoYCreditosInsuficientes();
         simulacionSeDetieneConCiclo();
         reporteJsonContieneDeducciones();
+        verificadorMPSReportaPorMateria();
 
         System.out.println();
         System.out.println(ok + " pruebas OK, " + fallos.size() + " fallidas");
@@ -162,6 +163,23 @@ public class RazonadorTest {
         check("json trae consistente true", json.contains("\"consistente\": true"));
         String jsonCiclo = Reporte.json(Ejemplos.conCiclo());
         check("json del ciclo trae CICLO", jsonCiclo.contains("\"tipo\": \"CICLO\""));
+    }
+
+    static void verificadorMPSReportaPorMateria() {
+        VerificadorMPS v = new VerificadorMPS("Plan MPS", 12, 100);
+        v.materia("A", "Materia A", 3);
+        v.materia("B", "Materia B", 3);
+        v.materia("C", "Materia C", 3);
+        v.materia(null, null, 3);                 // materia sin código (como en MPS recién creada)
+        v.prerrequisito("A", "B");
+        v.prerrequisito("B", "A");
+        v.prerrequisito("C", null);               // referencia vacía
+        check("puente: A tiene error de ciclo", v.errores("A").length == 1 && v.errores("A")[0].contains("ciclo"));
+        check("puente: B tiene error de ciclo", v.errores("B").length == 1);
+        check("puente: sin advertencias en C", v.advertencias("C").length == 0);
+        check("puente: creditos insuficientes es error del plan", v.erroresDelPlan().length == 1);
+        check("puente: no falla con nulls", v.errores(null) != null);
+        check("puente: genera JSON", v.reporteJson().contains("\"consistente\": false"));
     }
 
     // ------------------------------------------------------------------ utilidades

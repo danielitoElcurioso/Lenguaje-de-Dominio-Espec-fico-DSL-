@@ -6,7 +6,7 @@ Algoritmo del razonador probado en Java puro, antes de integrarlo en JetBrains M
 
 ```bash
 javac -encoding UTF-8 -d out src/razonador/*.java test/razonador/*.java
-java -cp out razonador.RazonadorTest   # 34 pruebas
+java -cp out razonador.RazonadorTest   # 40 pruebas
 java -cp out razonador.Ejemplos        # imprime el reporte JSON de dos planes
 ```
 
@@ -34,13 +34,19 @@ heurística. Sin tope, el número de niveles del DAG sí es la respuesta exacta.
 - `Ejemplos.java`: un plan válido y tres inválidos (sirven para la Sandbox).
 - `test/RazonadorTest.java`: pruebas sin dependencias (no necesita JUnit).
 
-## Paso a MPS (jueves)
+## Integración con MPS
 
-1. Conceptos que debe tener la Structure de Daniel: `PlanEstudios` (raíz: `nombre`, `maxCreditosSemestre`,
-   `creditosGrado`, hijos `materias`), `Materia` (`codigo`, `nombre`, `creditos`, hijos `prerrequisitos`),
-   `RefPrerrequisito` (referencia a `Materia`).
-2. Copiar `Razonador` como clase de baseLanguage en el modelo del lenguaje (el código está en Java
-   simple a propósito), cambiando los `String` de código por `node<Materia>`. En MPS el código de cada materia es la propiedad `name` (Materia implementa INamedConcept).
-3. Una regla `checking rule` en el Typesystem sobre `PlanEstudios` que llame a `verificar()` y
-   marque con `error`/`warning` el nodo de cada `Diagnostico`.
-4. Un TextGen sobre `PlanEstudios` que produzca el JSON de `Reporte`.
+- `VerificadorMPS.java` es el puente: recibe el plan con tipos simples (String, int) y devuelve
+  los mensajes de cada materia como `String[]`.
+- Las clases se empaquetan en `solutions/planestudios.razonador/lib/razonador.jar`. Esa solución
+  expone el jar a MPS como *stubs* de Java, y el lenguaje `planestudios` depende de ella.
+- La regla `check_PlanEstudios_razonador` (Typesystem, *checking rule*) arma un `VerificadorMPS`
+  con el plan del editor y marca en rojo (error) o amarillo (warning) cada materia.
+
+Si cambias el razonador, vuelve a generar el jar:
+
+```bash
+javac -encoding UTF-8 --release 17 -d /tmp/jar src/razonador/*.java
+(cd /tmp/jar && jar cf ../razonador.jar razonador/*.class)
+cp /tmp/razonador.jar ../solutions/planestudios.razonador/lib/razonador.jar
+```

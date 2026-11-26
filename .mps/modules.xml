@@ -3,6 +3,7 @@
   <component name="MPSProject">
     <projectModules>
       <modulePath path="$PROJECT_DIR$/languages/planestudios/planestudios.mpl" folder="" />
+      <modulePath path="$PROJECT_DIR$/solutions/planestudios.razonador/planestudios.razonador.msd" folder="" />
       <modulePath path="$PROJECT_DIR$/solutions/planestudios.sandbox/planestudios.sandbox.msd" folder="" />
     </projectModules>
   </component>

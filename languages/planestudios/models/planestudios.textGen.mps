@@ -5,12 +5,13 @@
     <devkit ref="fa73d85a-ac7f-447b-846c-fcdc41caa600(jetbrains.mps.devkit.aspect.textgen)" />
   </languages>
   <imports>
-    <import index="p3so" ref="r:4a1f0499-890e-4e4d-93a6-51e20f7da37a(planestudios.structure)" />
-    <import index="rzn" ref="43f03e70-0bde-4d08-ac41-fb8b91c25994/java:razonador(planestudios.razonador/)" />
+    <import index="u6h8" ref="r:4a1f0499-890e-4e4d-93a6-51e20f7da37a(planestudios.structure)" />
+    <import index="ko7k" ref="43f03e70-0bde-4d08-ac41-fb8b91c25994/java:razonador(planestudios.razonador/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -21,14 +22,12 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
-      <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -52,19 +51,13 @@
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
-      </concept>
-      <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
-        <child id="1144226360166" name="iterable" index="1DdaDG" />
-      </concept>
-      <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
-        <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
     </language>
     <language id="b83431fe-5c8f-40bc-8a36-65e25f4dd253" name="jetbrains.mps.lang.textGen">
@@ -112,7 +105,7 @@
     </language>
   </registry>
   <node concept="WtQ9Q" id="3Kjqe9aeX1e">
-    <ref role="WuzLi" to="p3so:3Kjqe9adsfm" resolve="PlanEstudios" />
+    <ref role="WuzLi" to="u6h8:3Kjqe9adsfm" resolve="PlanEstudios" />
     <node concept="9MYSb" id="3Kjqe9aeX1b" role="33IsuW">
       <node concept="3clFbS" id="3Kjqe9aeX1a" role="2VODD2">
         <node concept="3clFbF" id="3Kjqe9aeX19" role="3cqZAp">
@@ -128,11 +121,11 @@
           <node concept="3cpWsn" id="3Kjqe9aeX01" role="3cpWs9">
             <property role="TrG5h" value="v" />
             <node concept="3uibUv" id="3Kjqe9aeX0b" role="1tU5fm">
-              <ref role="3uigEE" to="rzn:~VerificadorMPS" resolve="VerificadorMPS" />
+              <ref role="3uigEE" to="ko7k:~VerificadorMPS" resolve="VerificadorMPS" />
             </node>
             <node concept="2ShNRf" id="3Kjqe9aeX0d" role="33vP2m">
               <node concept="1pGfFk" id="3Kjqe9aeX0c" role="2ShVmc">
-                <ref role="37wK5l" to="rzn:~VerificadorMPS.&lt;init&gt;(java.lang.String,int,int)" resolve="VerificadorMPS" />
+                <ref role="37wK5l" to="ko7k:~VerificadorMPS.&lt;init&gt;(java.lang.String,int,int)" resolve="VerificadorMPS" />
                 <node concept="2OqwBi" id="3Kjqe9aeX04" role="37wK5m">
                   <node concept="117lpO" id="3Kjqe9aeX02" role="2Oq$k0" />
                   <node concept="3TrcHB" id="3Kjqe9aeX03" role="2OqNvi">
@@ -142,13 +135,13 @@
                 <node concept="2OqwBi" id="3Kjqe9aeX07" role="37wK5m">
                   <node concept="117lpO" id="3Kjqe9aeX05" role="2Oq$k0" />
                   <node concept="3TrcHB" id="3Kjqe9aeX06" role="2OqNvi">
-                    <ref role="3TsBF5" to="p3so:3Kjqe9adsgm" resolve="maxCreditosSemestre" />
+                    <ref role="3TsBF5" to="u6h8:3Kjqe9adsgm" resolve="maxCreditosSemestre" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="3Kjqe9aeX0a" role="37wK5m">
                   <node concept="117lpO" id="3Kjqe9aeX08" role="2Oq$k0" />
                   <node concept="3TrcHB" id="3Kjqe9aeX09" role="2OqNvi">
-                    <ref role="3TsBF5" to="p3so:3Kjqe9adsgr" resolve="creditosGrado" />
+                    <ref role="3TsBF5" to="u6h8:3Kjqe9adsgr" resolve="creditosGrado" />
                   </node>
                 </node>
               </node>
@@ -159,7 +152,7 @@
           <node concept="2OqwBi" id="3Kjqe9aeX0h" role="2GsD0m">
             <node concept="117lpO" id="3Kjqe9aeX0f" role="2Oq$k0" />
             <node concept="3Tsc0h" id="3Kjqe9aeX0g" role="2OqNvi">
-              <ref role="3TtcxE" to="p3so:3Kjqe9adsgC" resolve="materia" />
+              <ref role="3TtcxE" to="u6h8:3Kjqe9adsgC" resolve="materia" />
             </node>
           </node>
           <node concept="2GrKxI" id="3Kjqe9aeX0i" role="2Gsz3X">
@@ -172,7 +165,7 @@
                   <ref role="3cqZAo" node="3Kjqe9aeX01" resolve="v" />
                 </node>
                 <node concept="liA8E" id="3Kjqe9aeX0u" role="2OqNvi">
-                  <ref role="37wK5l" to="rzn:~VerificadorMPS.materia(java.lang.String,java.lang.String,int)" resolve="materia" />
+                  <ref role="37wK5l" to="ko7k:~VerificadorMPS.materia(java.lang.String,java.lang.String,int)" resolve="materia" />
                   <node concept="2OqwBi" id="3Kjqe9aeX0n" role="37wK5m">
                     <node concept="2GrUjf" id="3Kjqe9aeX0l" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="3Kjqe9aeX0i" resolve="m" />
@@ -186,7 +179,7 @@
                       <ref role="2Gs0qQ" node="3Kjqe9aeX0i" resolve="m" />
                     </node>
                     <node concept="3TrcHB" id="3Kjqe9aeX0p" role="2OqNvi">
-                      <ref role="3TsBF5" to="p3so:3Kjqe9adsgx" resolve="nombre" />
+                      <ref role="3TsBF5" to="u6h8:3Kjqe9adsgx" resolve="nombre" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="3Kjqe9aeX0t" role="37wK5m">
@@ -194,7 +187,7 @@
                       <ref role="2Gs0qQ" node="3Kjqe9aeX0i" resolve="m" />
                     </node>
                     <node concept="3TrcHB" id="3Kjqe9aeX0s" role="2OqNvi">
-                      <ref role="3TsBF5" to="p3so:3Kjqe9adsgy" resolve="creditos" />
+                      <ref role="3TsBF5" to="u6h8:3Kjqe9adsgy" resolve="creditos" />
                     </node>
                   </node>
                 </node>
@@ -206,7 +199,7 @@
           <node concept="2OqwBi" id="3Kjqe9aeX0A" role="2GsD0m">
             <node concept="117lpO" id="3Kjqe9aeX0y" role="2Oq$k0" />
             <node concept="3Tsc0h" id="3Kjqe9aeX0z" role="2OqNvi">
-              <ref role="3TtcxE" to="p3so:3Kjqe9adsgC" resolve="materia" />
+              <ref role="3TtcxE" to="u6h8:3Kjqe9adsgC" resolve="materia" />
             </node>
           </node>
           <node concept="2GrKxI" id="3Kjqe9aeX0B" role="2Gsz3X">
@@ -219,7 +212,7 @@
                   <ref role="2Gs0qQ" node="3Kjqe9aeX0B" resolve="m" />
                 </node>
                 <node concept="3Tsc0h" id="3Kjqe9aeX0E" role="2OqNvi">
-                  <ref role="3TtcxE" to="p3so:3Kjqe9adsgE" resolve="prerrequisitos" />
+                  <ref role="3TtcxE" to="u6h8:3Kjqe9adsgE" resolve="prerrequisitos" />
                 </node>
               </node>
               <node concept="2GrKxI" id="3Kjqe9aeX0G" role="2Gsz3X">
@@ -233,7 +226,7 @@
                         <ref role="2Gs0qQ" node="3Kjqe9aeX0G" resolve="r" />
                       </node>
                       <node concept="3TrEf2" id="3Kjqe9aeX0J" role="2OqNvi">
-                        <ref role="3Tt5mk" to="p3so:3Kjqe9adsgJ" resolve="materia" />
+                        <ref role="3Tt5mk" to="u6h8:3Kjqe9adsgJ" resolve="materia" />
                       </node>
                     </node>
                     <node concept="3x8VRR" id="3Kjqe9aeX0L" role="2OqNvi" />
@@ -245,7 +238,7 @@
                           <ref role="3cqZAo" node="3Kjqe9aeX01" resolve="v" />
                         </node>
                         <node concept="liA8E" id="3Kjqe9aeX0W" role="2OqNvi">
-                          <ref role="37wK5l" to="rzn:~VerificadorMPS.prerrequisito(java.lang.String,java.lang.String)" resolve="prerrequisito" />
+                          <ref role="37wK5l" to="ko7k:~VerificadorMPS.prerrequisito(java.lang.String,java.lang.String)" resolve="prerrequisito" />
                           <node concept="2OqwBi" id="3Kjqe9aeX0Q" role="37wK5m">
                             <node concept="2GrUjf" id="3Kjqe9aeX0O" role="2Oq$k0">
                               <ref role="2Gs0qQ" node="3Kjqe9aeX0B" resolve="m" />
@@ -260,7 +253,7 @@
                                 <ref role="2Gs0qQ" node="3Kjqe9aeX0G" resolve="r" />
                               </node>
                               <node concept="3TrEf2" id="3Kjqe9aeX0S" role="2OqNvi">
-                                <ref role="3Tt5mk" to="p3so:3Kjqe9adsgJ" resolve="materia" />
+                                <ref role="3Tt5mk" to="u6h8:3Kjqe9adsgJ" resolve="materia" />
                               </node>
                             </node>
                             <node concept="3TrcHB" id="3Kjqe9aeX0U" role="2OqNvi">
@@ -283,7 +276,7 @@
                 <ref role="3cqZAo" node="3Kjqe9aeX01" resolve="v" />
               </node>
               <node concept="liA8E" id="3Kjqe9aeX14" role="2OqNvi">
-                <ref role="37wK5l" to="rzn:~VerificadorMPS.reporteJson()" resolve="reporteJson" />
+                <ref role="37wK5l" to="ko7k:~VerificadorMPS.reporteJson()" resolve="reporteJson" />
               </node>
             </node>
           </node>
@@ -292,3 +285,4 @@
     </node>
   </node>
 </model>
+
